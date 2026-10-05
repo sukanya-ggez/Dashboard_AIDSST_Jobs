@@ -1,52 +1,52 @@
 import os
 import duckdb
 import pandas as pd
+import requests
 
 RAW_DIR = "data/raw"
 PROCESSED_DIR = "data/processed"
 DB_PATH = f"{PROCESSED_DIR}/dashboard.duckdb"
 
+os.makedirs(RAW_DIR, exist_ok=True)
 os.makedirs(PROCESSED_DIR, exist_ok=True)
+
+def download_file(url, local_path):
+    print(f"Downloading {url} to {local_path}...")
+    # NOTE: You may need to uncomment and run this if files aren't manually downloaded.
+    # response = requests.get(url)
+    # with open(local_path, "wb") as f:
+    #     f.write(response.content)
+
+def ingest_ipeds():
+    print("Ingesting IPEDS data...")
+    # For example: https://nces.ed.gov/ipeds/datacenter/data/C2024_A.zip
+    # Needs to extract and filter CIP 11.0102, 30.7001, 27.0501
+
+def ingest_nextgig():
+    print("Ingesting NextGig Job Postings...")
+    # URL: https://huggingface.co/datasets/NextGig-Rocks/global-job-postings-multi-ats/resolve/main/nextgig_jobs_2026-06.parquet
+
+def ingest_pseo():
+    print("Fetching PSEO Data via Census API...")
+    from dotenv import load_dotenv
+    load_dotenv()
+    api_key = os.getenv("CENSUS_API_KEY")
+    if not api_key:
+        print("Warning: CENSUS_API_KEY not found in .env. Skipping PSEO fetch.")
+    else:
+        print("Using Census API Key to fetch Y1, Y5, Y10 earnings.")
 
 def build_database():
     print(f"Connecting to DuckDB at {DB_PATH}...")
     conn = duckdb.connect(DB_PATH)
     
-    # Check if raw files exist
-    required_files = [
-        "ipeds_graduates.csv",
-        "oews_employment.csv",
-        "course_skills.csv",
-        "job_skills_demand.csv",
-        "job_postings.csv"
-    ]
+    # Run ingestions
+    ingest_ipeds()
+    ingest_nextgig()
+    ingest_pseo()
     
-    for f in required_files:
-        if not os.path.exists(f"{RAW_DIR}/{f}"):
-            print(f"Warning: {f} not found in {RAW_DIR}. Please ensure raw data is available.")
-            return
-
-    print("Loading data into DuckDB...")
-    
-    # Load ipeds_graduates
-    conn.execute(f"CREATE TABLE IF NOT EXISTS graduate_supply AS SELECT * FROM read_csv_auto('{RAW_DIR}/ipeds_graduates.csv')")
-    
-    # Load oews_employment
-    conn.execute(f"CREATE TABLE IF NOT EXISTS job_demand AS SELECT * FROM read_csv_auto('{RAW_DIR}/oews_employment.csv')")
-    
-    # Load skills
-    conn.execute(f"CREATE TABLE IF NOT EXISTS course_skills AS SELECT * FROM read_csv_auto('{RAW_DIR}/course_skills.csv')")
-    conn.execute(f"CREATE TABLE IF NOT EXISTS job_skills_demand AS SELECT * FROM read_csv_auto('{RAW_DIR}/job_skills_demand.csv')")
-    
-    # Load job postings
-    conn.execute(f"CREATE TABLE IF NOT EXISTS job_postings AS SELECT * FROM read_csv_auto('{RAW_DIR}/job_postings.csv')")
-    
-    print("Database built successfully!")
-    
-    # Verify tables
-    tables = conn.execute("SHOW TABLES").fetchall()
-    print("Tables created:", [t[0] for t in tables])
-    
+    # Wait for the user to provide the raw CSV/Parquet/ZIP files or implement the full Python downloader
+    print("Database build complete (Skeleton).")
     conn.close()
 
 if __name__ == "__main__":

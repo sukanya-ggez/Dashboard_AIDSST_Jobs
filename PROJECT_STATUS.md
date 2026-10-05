@@ -1,22 +1,25 @@
-# Project Status & Progress Tracking
+# Project Status & Progress Tracking (v2.0 - Real Data Edition)
 
 ## 📝 Phase 1: Project Initialization & Planning
 - [x] Analyze BRD and Handoff documents.
 - [x] Create project `README.md`.
 - [x] Create `PROJECT_STATUS.md`.
 - [x] Initial Git commit for documentation.
+- [x] Update to BRD v2.0 (Real Data Edition) requirements.
 
 ## 🏗️ Phase 2: Project Structure Setup
 - [x] Setup Python virtual environment & dependencies (`requirements.txt`).
 - [x] Create directory structure (`/data`, `/src`, `/assets`, `/notebooks`, etc.).
 - [x] Initialize basic Dash application skeleton.
 
-## 💾 Phase 3: Data Pipeline & Preprocessing
-- [x] Download and place raw datasets (IPEDS, BLS OEWS, O*NET, Qarera, Datamata, data_jobs) - *Mocked via `mock_data_generator.py`*
-- [x] Implement data ingestion scripts (ETL to DuckDB / Parquet) - *Via `data_pipeline.py`*
-- [x] Implement domain classification mapping (AI, DS, STAT).
-- [x] Implement career level taxonomy mapping (Entry, Intermediate, Expert).
-- [x] Implement course-to-skill and job-to-skill mapping.
+## 💾 Phase 3: Data Pipeline & Preprocessing (Real Data Only)
+- [ ] Implement data ingestion scripts for real sources (NCES IPEDS, Census PSEO, NextGig).
+- [ ] Build `dim_skill` canonical skill dictionary.
+- [ ] Implement domain classification mapping based on CIP 2020 and Title rules.
+- [ ] Implement career level taxonomy mapping (Entry, Intermediate, Expert).
+- [ ] Implement curriculum mapping (UC Berkeley, CMU, Penn State).
+- [ ] Setup `.env` for Census API key.
+- [ ] Run ETL pipeline into DuckDB (`dashboard.duckdb`).
 
 ## 📈 Phase 4: Dashboard Implementation
 - [x] Build Global Filters component.

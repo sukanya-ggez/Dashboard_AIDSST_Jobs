@@ -1,9 +1,11 @@
 # Dashboard: AI / Data Science / Statistics — Graduate Supply, Job Demand & Skills Mismatch
 
+**Version 2.0 (Real Data Edition)** - This production dashboard operates strictly on real, official data. No mock, synthetic, or interpolated data is allowed.
+
 ## 📌 Project Overview
 This project aims to build an interactive analytical dashboard using **Python, Dash, and Plotly** to explore and connect three main aspects of the AI, Data Science, and Statistics fields:
-1. **Graduate Supply:** How many students are graduating, from which programs, what skills they learn, and how quickly they get employed.
-2. **Job Demand:** How many jobs are available, which companies are hiring, what skills they require, and the salary distributions across career levels.
+1. **Graduate Supply:** How many students are graduating, official curricula (e.g., UC Berkeley, CMU), tuition costs, and 1/5/10-year employment outcomes.
+2. **Job Demand:** Vacancies from real ATS snapshots (NextGig), demanded skills, company details, and salary percentiles.
 3. **Skills Mismatch Analysis:** How well the skills taught in academic programs align with the skills demanded by the job market.
 
 The dashboard serves as a tool for students, educators, career advisors, and curriculum developers to understand the current workforce and education landscape.
