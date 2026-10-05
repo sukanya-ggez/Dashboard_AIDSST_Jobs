@@ -12,23 +12,23 @@
 - [x] Initialize basic Dash application skeleton.
 
 ## 💾 Phase 3: Data Pipeline & Preprocessing
-- [ ] Download and place raw datasets (IPEDS, BLS OEWS, O*NET, Qarera, Datamata, data_jobs).
-- [ ] Implement data ingestion scripts (ETL to DuckDB / Parquet).
-- [ ] Implement domain classification mapping (AI, DS, STAT).
-- [ ] Implement career level taxonomy mapping (Entry, Intermediate, Expert).
-- [ ] Implement course-to-skill and job-to-skill mapping.
+- [x] Download and place raw datasets (IPEDS, BLS OEWS, O*NET, Qarera, Datamata, data_jobs) - *Mocked via `mock_data_generator.py`*
+- [x] Implement data ingestion scripts (ETL to DuckDB / Parquet) - *Via `data_pipeline.py`*
+- [x] Implement domain classification mapping (AI, DS, STAT).
+- [x] Implement career level taxonomy mapping (Entry, Intermediate, Expert).
+- [x] Implement course-to-skill and job-to-skill mapping.
 
 ## 📈 Phase 4: Dashboard Implementation
-- [ ] Build Global Filters component.
+- [x] Build Global Filters component.
 - [ ] **Tab 1: Graduate Supply**
   - [ ] KPI Cards
-  - [ ] Chart 1: Program Graduates (Line/Bar)
+  - [x] Chart 1: Program Graduates (Line/Bar)
   - [ ] Chart 2: Course-Skill Coverage (Heatmap/Bar)
   - [ ] Chart 3: Employment Outcomes (Grouped Bar/Line)
   - [ ] Chart 4: Tuition Costs (Horizontal Bar/Bubble)
 - [ ] **Tab 2: Job Demand**
   - [ ] KPI Cards
-  - [ ] Chart 1: Job Postings/Openings (Line/Stacked Bar)
+  - [x] Chart 1: Job Postings/Openings (Line/Stacked Bar)
   - [ ] Chart 2: Demanded Skills (Horizontal Bar/Heatmap)
 - [ ] **Tab 3: Skills Mismatch Analysis**
   - [ ] Mismatch calculation logic
